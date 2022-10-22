@@ -27,10 +27,51 @@ This project documents the beginning of my journey with FPGAs and digital hardwa
 
 * cin - carry/borrow input
 
-
 ## Output signals encoding
 
 * result\[N:0\] - result of the selected operation
 
 * cout - carry/borrow output
 
+
+## ⚙️ Behavioral simulation
+
+### Dependencies
+
+- GNU Make
+
+- GHDL
+
+- Preferably a Linux machine :)
+
+### Running the simulation
+
+1. Clone this repository
+
+2. Open terminal inside the cloned repo's directory
+
+3. Run one of the following:
+
+* To analyze and simulate every unit of the ALU:
+
+```
+make
+```
+
+* To analyze and simulate a specific unit:
+
+```
+make <name of the unit>
+```
+
+
+example:
+
+
+```
+make full_adder
+```
+
+## 🚀 Synthesis and fitting
+
+Synthesis and fitting onto actual hardware is not yet available for this project.
