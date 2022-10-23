@@ -1,4 +1,10 @@
-all: full_adder rca
+all: alu
+
+alu: full_adder rca
+	ghdl -a ./rtl/alu.vhdl
+	ghdl -a ./rtl/alu_tb.vhdl
+	ghdl -e alu_tb
+	./alu_tb --vcd=alu.vcd
 
 full_adder:
 	ghdl -a ./rtl/adder/full_adder.vhdl
