@@ -21,6 +21,8 @@ end alu;
 architecture alu_rtl of alu is
     signal sum : std_logic_vector(N downto 0);
     signal adder_cout : std_logic;
+    signal diff : std_logic_vector(N downto 0);
+    signal sub_bout : std_logic;
 begin
 
     adder : entity work.rca(rca_rtl) port map (
@@ -29,6 +31,14 @@ begin
         cin => cin,
         cout => adder_cout,
         sum => sum
+    );
+
+    subtractor : entity work.rbs(rbs_rtl) port map (
+        op1 => op_a,
+        op2 => op_b,
+        bin => cin,
+        bout => sub_bout,
+        diff => diff
     );
 
     process (clk) begin
@@ -46,6 +56,9 @@ begin
                 when "0011" => -- add
                     cout <= adder_cout;
                     result <= sum;
+                when "0100" => -- subtract
+                    cout <= sub_bout;
+                    result <= diff;
                 when others => -- others to be implemented
                     cout <= '0';
                     result <= (others => '0'); 
