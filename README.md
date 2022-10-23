@@ -6,7 +6,7 @@ This project documents the beginning of my journey with FPGAs and digital hardwa
 
 * clk - clock input
 
-* operation\[2:0\] - type of operation to be performed
+* operation\[3:0\] - type of operation to be performed
 
 | operation\[3:0\] | description |
 |:----------------:|-------------|
