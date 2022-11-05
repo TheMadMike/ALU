@@ -25,7 +25,7 @@ architecture alu_rtl of alu is
     signal sub_bout : std_logic;
 begin
 
-    adder : entity work.rca(rca_rtl) port map (
+    adder : entity work.adder(rca_rtl) port map (
         op1 => op_a,
         op2 => op_b,
         cin => cin,

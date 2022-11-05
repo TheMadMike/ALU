@@ -2,11 +2,11 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity rca_tb is
-end rca_tb;
+entity adder_tb is
+end adder_tb;
 
-architecture rca_tb_arch of rca_tb is
-    component rca
+architecture adder_tb_arch of adder_tb is
+    component adder
     port (
         op1 : in std_logic_vector(31 downto 0); -- first operand
         op2 : in std_logic_vector(31 downto 0); -- second operand
@@ -22,7 +22,7 @@ architecture rca_tb_arch of rca_tb is
     signal cout : std_logic;
     signal cin : std_logic;
 begin
-    UUT: rca port map (
+    UUT: entity work.adder(rca_rtl) port map (
         op1 => a,
         op2 => b,
         sum => sum,

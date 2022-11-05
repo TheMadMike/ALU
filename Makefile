@@ -1,6 +1,6 @@
 all: alu
 
-alu: full_adder full_subtractor rca rbs
+alu: full_adder full_subtractor adder rbs
 	ghdl -a ./rtl/alu.vhdl
 	ghdl -a ./rtl/alu_tb.vhdl
 	ghdl -e alu_tb
@@ -12,11 +12,11 @@ full_adder:
 	ghdl -e full_adder_tb
 	./full_adder_tb --vcd=full_adder.vcd
 
-rca: full_adder
-	ghdl -a ./rtl/adder/rca.vhdl
-	ghdl -a ./rtl/adder/rca_tb.vhdl
-	ghdl -e rca_tb
-	./rca_tb --vcd=rca.vcd
+adder: full_adder
+	ghdl -a ./rtl/adder/adder.vhdl
+	ghdl -a ./rtl/adder/adder_tb.vhdl
+	ghdl -e adder_tb
+	./adder_tb --vcd=adder_tb.vcd
 
 full_subtractor:
 	ghdl -a ./rtl/subtractor/full_subtractor.vhdl

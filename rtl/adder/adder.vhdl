@@ -1,8 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
--- ripple carry adder
-entity rca is
+entity adder is
     generic(
         N : positive := 31 -- size of the operands and the result in bits - 1
     );
@@ -13,9 +12,10 @@ entity rca is
         sum : out std_logic_vector(N downto 0); -- (op1 + op2) mod N
         cout : out std_logic -- carry out
     );
-end rca;
+end adder;
 
-architecture rca_rtl of rca is
+-- ripple carry adder
+architecture rca_rtl of adder is
     signal carry : std_logic_vector(N downto 0);
 begin
     fa0 : entity work.full_adder(full_adder_rtl) port map (
@@ -39,3 +39,10 @@ begin
     cout <= carry(N);
 
 end rca_rtl;
+
+-- carry look-ahead adder
+architecture cla_rtl of adder is
+    
+begin
+    
+end cla_rtl; 
