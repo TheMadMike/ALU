@@ -4,7 +4,7 @@ alu: full_adder full_subtractor adder rbs
 	ghdl -a ./rtl/alu.vhdl
 	ghdl -a ./rtl/alu_tb.vhdl
 	ghdl -e alu_tb
-	./alu_tb --vcd=alu.vcd
+	./alu_tb --vcd=alu.vcd --stop-time=600ns
 
 full_adder:
 	ghdl -a ./rtl/adder/full_adder.vhdl

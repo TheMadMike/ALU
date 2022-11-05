@@ -24,7 +24,7 @@ architecture alu_tb_arch of alu_tb is
     signal operation : std_logic_vector(3 downto 0);
     signal cout : std_logic;
     signal cin : std_logic;
-    signal clk : std_logic;
+    signal clk : std_logic := '0';
 begin
     UUT: alu port map (
         op_a => a,
@@ -36,34 +36,23 @@ begin
         clk => clk
     );
 
+    clk <= not clk after 100 ns;
+
     -- test sample operations
     process begin
-        clk <= '0';
         cin <= '0';
-        a <= x"00_00_00_FF";
+        a <= x"00_FF_FF_FF";
         b <= x"00_00_00_81";
         operation <= b"0000"; -- xor
+        wait for 200 ns;
         
-        wait for 10 ns;
-        clk <= '1';
-        wait for 10 ns;
-        
-        clk <= '0';
         operation <= b"0011"; -- add
         
-        wait for 10 ns;
-        clk <= '1';
-        wait for 10 ns;
-        
-        clk <= '0';
+        wait for 200 ns;
 
         operation <= b"0100"; -- subtract
-        
-        wait for 10 ns;
-        clk <= '1';
-        wait for 10 ns;
-        
-        clk <= '0';
+
+        wait for 200 ns;
 
         wait;
     end process;
